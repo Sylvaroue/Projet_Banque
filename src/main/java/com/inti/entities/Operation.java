@@ -1,26 +1,28 @@
 package com.inti.entities;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Operation{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idOperation ;
 	private float montant;
 	private String type;
 	private String libelle;
+	@Temporal(TemporalType.DATE)
+	private Date dateOperation;
 	
 	@OneToMany(mappedBy = "operation")
 	List<Commentaire> commentaire;
@@ -28,11 +30,12 @@ public class Operation{
 	@ManyToOne
 	Compte compte;
 
-	public Operation(float montant, String type, String libelle, Compte compte) {
+	public Operation(float montant, String type, String libelle, Date dateOperation, Compte compte) {
 		super();
 		this.montant = montant;
 		this.type = type;
 		this.libelle = libelle;
+		this.dateOperation = dateOperation;
 		this.compte = compte;
 	}
 
@@ -70,6 +73,14 @@ public class Operation{
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+	
+	public Date getDateOperation() {
+		return dateOperation;
+	}
+
+	public void setDateOperation(Date dateOperation) {
+		this.dateOperation = dateOperation;
 	}
 
 	public List<Commentaire> getCommentaire() {
