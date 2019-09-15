@@ -15,13 +15,13 @@ public class OperationPonctuelle extends Operation {
 
 	public OperationPonctuelle(float montant, String type, String libelle, List<Commentaire> commentaire, Compte compte,
 			Date dateoperation) {
-		super(montant, type, libelle, commentaire, compte);
+		super(montant, type, libelle, compte);
 		this.dateoperation = dateoperation;
 	}
 
 	public OperationPonctuelle(float montant, String type, String libelle, List<Commentaire> commentaire,
 			Compte compte) {
-		super(montant, type, libelle, commentaire, compte);
+		super(montant, type, libelle, compte);
 	}
 
 	public Date getDateoperation() {
@@ -31,7 +31,6 @@ public class OperationPonctuelle extends Operation {
 	public void setDateoperation(Date dateoperation) {
 		this.dateoperation = dateoperation;
 	}
-	
 	
 
 }

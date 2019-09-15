@@ -14,15 +14,16 @@ public class OperationMensuelle extends Operation {
 	private Date datedebut;
 	@Temporal(TemporalType.DATE)
 	private Date datefin;
+	
 	public OperationMensuelle(float montant, String type, String libelle, List<Commentaire> commentaire, Compte compte,
 			Date datedebut, Date datefin) {
-		super(montant, type, libelle, commentaire, compte);
+		super(montant, type, libelle, compte);
 		this.datedebut = datedebut;
 		this.datefin = datefin;
 	}
 	public OperationMensuelle(float montant, String type, String libelle, List<Commentaire> commentaire,
 			Compte compte) {
-		super(montant, type, libelle, commentaire, compte);
+		super(montant, type, libelle, compte);
 	}
 	public Date getDatedebut() {
 		return datedebut;
@@ -36,8 +37,6 @@ public class OperationMensuelle extends Operation {
 	public void setDatefin(Date datefin) {
 		this.datefin = datefin;
 	}
-	
-	
-	
+
 	
 }

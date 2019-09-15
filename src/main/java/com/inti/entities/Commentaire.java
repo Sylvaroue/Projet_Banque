@@ -1,6 +1,5 @@
 package com.inti.entities;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -13,9 +12,8 @@ import javax.persistence.TemporalType;
 
 
 @Entity
-public class Commentaire implements Serializable {
+public class Commentaire{
 
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idcom;
@@ -80,15 +78,5 @@ public class Commentaire implements Serializable {
 	public void setOperation(Operation operation) {
 		this.operation = operation;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
-	
-	
-	
-	
 	
 }

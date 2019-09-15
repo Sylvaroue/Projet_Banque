@@ -1,6 +1,5 @@
 package com.inti.entities;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,12 +13,11 @@ import javax.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Operation implements Serializable {
+public class Operation{
 	
-	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idoperation ;
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private long idOperation ;
 	private float montant;
 	private String type;
 	private String libelle;
@@ -30,12 +28,11 @@ public class Operation implements Serializable {
 	@ManyToOne
 	Compte compte;
 
-	public Operation(float montant, String type, String libelle, List<Commentaire> commentaire, Compte compte) {
+	public Operation(float montant, String type, String libelle, Compte compte) {
 		super();
 		this.montant = montant;
 		this.type = type;
 		this.libelle = libelle;
-		this.commentaire = commentaire;
 		this.compte = compte;
 	}
 
@@ -43,12 +40,12 @@ public class Operation implements Serializable {
 		super();
 	}
 
-	public long getIdoperation() {
-		return idoperation;
+	public long getIdOperation() {
+		return idOperation;
 	}
 
-	public void setIdoperation(long idoperation) {
-		this.idoperation = idoperation;
+	public void setIdOperation(long idOperation) {
+		this.idOperation = idOperation;
 	}
 
 	public float getMontant() {
@@ -90,13 +87,5 @@ public class Operation implements Serializable {
 	public void setCompte(Compte compte) {
 		this.compte = compte;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
-	
-	
 
 }

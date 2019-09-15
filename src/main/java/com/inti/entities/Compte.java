@@ -1,33 +1,36 @@
 package com.inti.entities;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Compte implements Serializable {
+public class Compte {
 	
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idcompte;
 	private float solde;
 	
+	@ManyToOne
+	Client client;
+	
 	@OneToMany(mappedBy = "compte")
-	List<Operation> operation;
+	List<Operation> operations;
 
-	@OneToMany(mappedBy = "seuil")
+	@OneToMany(mappedBy = "compte")
 	List<Seuil> seuil;
 	
-	public Compte(float solde, List<Operation> operation) {
+	public Compte(float solde, Client client, List<Operation> operations) {
 		super();
 		this.solde = solde;
-		this.operation = operation;
+		this.client = client;
+		this.operations = operations;
 	}
 
 	public Compte() {
@@ -50,12 +53,20 @@ public class Compte implements Serializable {
 		this.solde = solde;
 	}
 
-	public List<Operation> getOperation() {
-		return operation;
+	public Client getClient() {
+		return client;
 	}
 
-	public void setOperation(List<Operation> operation) {
-		this.operation = operation;
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public List<Operation> getOperations() {
+		return operations;
+	}
+
+	public void setOperations(List<Operation> operations) {
+		this.operations = operations;
 	}
 
 	public List<Seuil> getSeuil() {
@@ -65,13 +76,5 @@ public class Compte implements Serializable {
 	public void setSeuil(List<Seuil> seuil) {
 		this.seuil = seuil;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	
-	
-	
 
 }

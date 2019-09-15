@@ -11,9 +11,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class Employe extends User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idEmploye;
 	private String affectation;
 	
 	@OneToMany(mappedBy = "employe")
@@ -27,18 +24,10 @@ public class Employe extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Employe(String nomUser, String prenomUser, String password, Role role, String affectation) {
-		super(nomUser, prenomUser, password, role);
+	public Employe(String nomUser, String prenomUser, String username, String password, Role role, String affectation) {
+		super(nomUser, prenomUser, username, password, role);
 		// TODO Auto-generated constructor stub
 		this.affectation = affectation;
-	}
-
-	public Long getIdEmploye() {
-		return idEmploye;
-	}
-
-	public void setIdEmploye(Long idEmploye) {
-		this.idEmploye = idEmploye;
 	}
 
 	public String getAffectation() {

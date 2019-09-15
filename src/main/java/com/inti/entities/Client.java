@@ -11,10 +11,6 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Client extends User {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idClient;
 	
 	@OneToMany(mappedBy = "client")
 	Set<Compte> comptes;
@@ -27,17 +23,9 @@ public class Client extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Client(String nomUser, String prenomUser, String password, Role role) {
-		super(nomUser, prenomUser, password, role);
+	public Client(String nomUser, String prenomUser, String username, String password, Role role) {
+		super(nomUser, prenomUser, username, password, role);
 		// TODO Auto-generated constructor stub
-	}
-
-	public Long getIdClient() {
-		return idClient;
-	}
-
-	public void setIdClient(Long idClient) {
-		this.idClient = idClient;
 	}
 
 	public Set<Compte> getComptes() {

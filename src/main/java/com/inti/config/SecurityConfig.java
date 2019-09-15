@@ -11,12 +11,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.inti.service.impl.AppUserDetailsService;
+//import com.inti.service.impl.AppUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	@Autowired
+/*	@Autowired
 	private AppUserDetailsService userDetailsService;
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService);
 	}
-
+*/
 	/*
 	 * protected void configure(HttpSecurity http) throws Exception{ http
 	 * .authorizeRequests() .anyRequest().authenticated() .and() .formLogin()
