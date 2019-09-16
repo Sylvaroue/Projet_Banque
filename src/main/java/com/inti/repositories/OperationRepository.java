@@ -7,7 +7,5 @@ import com.inti.entities.Operation;
 
 @Repository
 public interface OperationRepository extends JpaRepository<Operation, Long> {
-	
-	public Operation opMensuelle(Operation operation, int nbMois);
 
 }
