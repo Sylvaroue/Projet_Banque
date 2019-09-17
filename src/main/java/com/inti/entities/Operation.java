@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 public class Operation{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idOperation ;
 	private float montant;
 	private String type;
