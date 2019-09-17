@@ -8,6 +8,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User {
@@ -20,6 +22,7 @@ public class User {
 	private String username;
 	private String password;
 	
+	@JsonIgnore
 	@ManyToOne
 	private Role role;
 	

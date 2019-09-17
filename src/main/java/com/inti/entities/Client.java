@@ -6,12 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Client extends User {
 	
 	@OneToMany(mappedBy = "client")
 	Set<Compte> comptes;
 	
+	@JsonIgnore
 	@ManyToOne
 	Employe employe;
 

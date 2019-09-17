@@ -3,10 +3,12 @@ package com.inti.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inti.entities.Client;
@@ -21,22 +23,22 @@ public class ClientController {
 	@Autowired
 	IClientService clientService ;
 	
-	@RequestMapping(value="/clients", method = RequestMethod.GET)
+	@GetMapping(value="clients")
 	public List<Client> findAll() {
 		return clientService.findAll();
 	}
 	
-	@RequestMapping(value="/clients/{id}", method = RequestMethod.GET)
+	@GetMapping(value="client/{id}")
 	public Client findById(@PathVariable("id") Long idClient) {
-		return clientService.findById(idClient);
+		return clientService.findById(idClient).orElse(null);
 	}
 	
-	@RequestMapping(value="/clients", method = RequestMethod.POST)
-	public void save(@RequestBody Client client) {
-		clientService.save(client);
+	@PostMapping(value="client")
+	public Client save(@RequestBody Client client) {
+		return clientService.save(client);
 	}
 	
-	@RequestMapping(value="/clients/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value="client/{id}")
 	public void delete(@PathVariable("id") long idClient) {
 		clientService.delete(idClient);
 	}

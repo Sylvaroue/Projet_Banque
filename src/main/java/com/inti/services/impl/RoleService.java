@@ -1,6 +1,7 @@
 package com.inti.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,8 @@ public class RoleService implements IRoleService {
 	}
 
 	@Override
-	public Role findById(Long idRole) {
-		return roleRepository.findById(idRole).orElse(null);
+	public Optional<Role> findById(Long idRole) {
+		return roleRepository.findById(idRole);
 	}
 
 	@Override

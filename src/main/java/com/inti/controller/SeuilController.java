@@ -3,12 +3,13 @@ package com.inti.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 
 import com.inti.entities.Seuil;
 import com.inti.services.interfaces.ISeuilService;
@@ -20,22 +21,22 @@ public class SeuilController {
 	@Autowired
 	ISeuilService seuilService ;
 	
-	@RequestMapping(value="/seuils", method = RequestMethod.GET)
+	@GetMapping(value="seuils")
 	public List<Seuil> findAll() {
 		return seuilService.findAll();
 	}
 	
-	@RequestMapping(value="/seuils/{id}", method = RequestMethod.GET)
+	@GetMapping(value="seuil/{id}")
 	public Seuil findById(@PathVariable("id") Long idSeuil) {
-		return seuilService.findById(idSeuil);
+		return seuilService.findById(idSeuil).orElse(null);
 	}
 	
-	@RequestMapping(value="/seuils", method = RequestMethod.POST)
-	public void save(@RequestBody Seuil seuil) {
-		seuilService.save(seuil);
+	@PostMapping(value="seuil")
+	public Seuil save(@RequestBody Seuil seuil) {
+		return seuilService.save(seuil);
 	}
 	
-	@RequestMapping(value="/seuils/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value="seuil/{id}")
 	public void delete(@PathVariable("id") long idSeuil) {
 		seuilService.delete(idSeuil);
 	}

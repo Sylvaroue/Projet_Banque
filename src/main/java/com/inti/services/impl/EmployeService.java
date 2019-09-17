@@ -29,12 +29,9 @@ public class EmployeService implements IEmployeService {
 	}
 
 	@Override
-	public void delete(Long idEmploye) {
-		employeRepository.deleteById(idEmploye);
-	
-	
-
-}
+	public void delete(Long idUser) {
+		employeRepository.deleteById(idUser);
+	}
 
 	@Override
 	public Optional<Employe> findById(long idUser) {

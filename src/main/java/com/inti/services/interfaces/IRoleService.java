@@ -1,6 +1,7 @@
 package com.inti.services.interfaces;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.inti.entities.Role;
 
@@ -10,7 +11,7 @@ public interface IRoleService {
 	
 	public Role save(Role role);
 
-	public Role findById(Long idRole);
+	public Optional<Role> findById(Long idRole);
 
 	public void delete(Long idRole);
 }

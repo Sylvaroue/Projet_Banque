@@ -3,41 +3,51 @@ package com.inti.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inti.entities.Compte;
-
-
+import com.inti.services.interfaces.ICompteService;
 
 @RestController
 @RequestMapping(value = "/")
 public class CompteController {
 
-	
 	@Autowired
 	ICompteService compteService ;
 	
-	@RequestMapping(value="/comptes", method = RequestMethod.GET)
+	@GetMapping(value="comptes")
 	public List<Compte> findAll() {
 		return compteService.findAll();
 	}
 	
-	@RequestMapping(value="/comptes/{id}", method = RequestMethod.GET)
-	public Compte findById(@PathVariable("id") Long idCompte) {
-		return compteService.findById(idCompte);
+	@GetMapping(value="compte/{id}")
+	public Compte findCompteById(@PathVariable("id") Long idCompte) {
+		return compteService.findOne(idCompte).orElse(null);
 	}
 	
-	@RequestMapping(value="/comptes", method = RequestMethod.POST)
-	public void save(@RequestBody Compte compte) {
-		compteService.save(compte);
+	@PostMapping(value="compte")
+	public Compte saveCompte(@RequestBody Compte compte) {
+		return compteService.save(compte);
 	}
 	
-	@RequestMapping(value="/comptes/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") long idCompte) {
+	@DeleteMapping(value="compte/{id}")
+	public void deleteCompte(@PathVariable("id") long idCompte) {
 		compteService.delete(idCompte);
+	}
+	
+	@PutMapping(value="solde/{id}")
+	public Compte updateSolde(@PathVariable("id") long idCompte, @RequestBody Compte compte) {
+		if(compteService.findOne(idCompte) == null) {
+			return null;
+		} else 
+			compteService.soldeMaj(compte);
+			return compteService.save(compte);
 	}
 }

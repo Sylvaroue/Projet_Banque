@@ -12,12 +12,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-//@Data
 public class Operation{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idOperation ;
 	private float montant;
 	private String type;
@@ -28,6 +29,7 @@ public class Operation{
 	@OneToMany(mappedBy = "operation")
 	List<Commentaire> commentaire;
 	
+	@JsonIgnore
 	@ManyToOne
 	Compte compte;
 

@@ -11,7 +11,7 @@ public interface IOperationService {
 
 	public Optional<Operation> findOne(Long idOperation);
 
-	public Operation save(Operation classe);
+	public Operation save(Operation compte);
 
 	public void delete(Long idOperation);
 	

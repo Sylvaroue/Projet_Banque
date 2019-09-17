@@ -9,14 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Compte {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idcompte;
+	private long idCompte;
 	private float solde;
 	
+	@JsonIgnore
 	@ManyToOne
 	Client client;
 	
@@ -37,12 +40,12 @@ public class Compte {
 		super();
 	}
 
-	public long getIdcompte() {
-		return idcompte;
+	public long getIdCompte() {
+		return idCompte;
 	}
 
-	public void setIdcompte(long idcompte) {
-		this.idcompte = idcompte;
+	public void setIdCompte(long idCompte) {
+		this.idCompte = idCompte;
 	}
 
 	public float getSolde() {

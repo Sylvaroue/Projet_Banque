@@ -21,7 +21,7 @@ public class OperationController {
 	@Autowired
 	IOperationService operationService;
 	
-	@GetMapping(value = "operation")
+	@GetMapping(value = "operations")
 	public List<Operation> findAllOperation() {
 		return operationService.findAll();
 	}
@@ -31,7 +31,7 @@ public class OperationController {
 		return operationService.findOne(idOperation).orElse(null);
 	}
 	
-	@PostMapping(value = "operation")
+	@PostMapping(value = "operation_single")
 	public Operation saveOperation(@RequestBody Operation operation) {
 		return operationService.save(operation);
 	}
