@@ -1,6 +1,7 @@
 package com.inti.services.interfaces;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.inti.entities.Client;
 
@@ -10,8 +11,8 @@ public interface IClientService {
 	
 	public Client save(Client client);
 
-	public Client findById(Long idClient);
+	public Optional<Client> findById(Long idUser);
 
-	public void delete(Long idClient);
+	public void delete(Long idUser);
 
 }

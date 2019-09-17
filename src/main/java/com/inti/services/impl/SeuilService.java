@@ -7,11 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.inti.entities.Seuil;
 import com.inti.repositories.SeuilRepository;
+import com.inti.services.interfaces.ISeuilService;
 
 
 
 @Service
-public class SeuilService {
+public class SeuilService implements ISeuilService {
 	
 	@Autowired
 	SeuilRepository seuilRepository;

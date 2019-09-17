@@ -1,6 +1,7 @@
 package com.inti.services.interfaces;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.inti.entities.Employe;
 
@@ -10,8 +11,8 @@ public interface IEmployeService {
 	
 	public Employe save(Employe employe);
 	
-	public Employe findById(long idEmploye);
+	public Optional<Employe> findById(long idUser);
 	
-	public void delete(Long idEmploye);
+	public void delete(Long idUser);
 
 }

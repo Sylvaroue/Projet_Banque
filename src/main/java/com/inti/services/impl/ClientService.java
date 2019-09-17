@@ -1,17 +1,19 @@
 package com.inti.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inti.entities.Client;
 import com.inti.repositories.ClientRepository;
+import com.inti.services.interfaces.IClientService;
 
 
 
 @Service
-public class ClientService {
+public class ClientService implements IClientService {
 	
 	@Autowired
 	ClientRepository clientRepository;
@@ -22,8 +24,8 @@ public class ClientService {
 	}
 
 	@Override
-	public Client findById(Long idClient) {
-		return clientRepository.findById(idClient).orElse(null);
+	public Optional<Client> findById(Long idUser) {
+		return clientRepository.findById(idUser);
 	}
 
 	@Override
