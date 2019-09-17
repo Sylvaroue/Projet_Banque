@@ -16,7 +16,7 @@ public class Commentaire{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idcom;
+	private Long idCommentaire;
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	private String message;
@@ -40,11 +40,11 @@ public class Commentaire{
 	}
 
 	public Long getIdcom() {
-		return idcom;
+		return idCommentaire;
 	}
 
 	public void setIdcom(Long idcom) {
-		this.idcom = idcom;
+		this.idCommentaire = idcom;
 	}
 
 	public Date getDate() {
