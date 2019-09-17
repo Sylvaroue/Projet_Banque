@@ -7,11 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.inti.entities.Role;
 import com.inti.repositories.RoleRepository;
+import com.inti.services.interfaces.IRoleService;
 
 
 
 @Service
-public class RoleService {
+public class RoleService implements IRoleService {
 
 	@Autowired
 	RoleRepository roleRepository;
