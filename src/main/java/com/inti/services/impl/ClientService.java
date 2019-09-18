@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inti.entities.Client;
+import com.inti.entities.Compte;
 import com.inti.repositories.ClientRepository;
+import com.inti.repositories.CompteRepository;
 import com.inti.services.interfaces.IClientService;
 
 
@@ -17,6 +19,9 @@ public class ClientService implements IClientService {
 	
 	@Autowired
 	ClientRepository clientRepository;
+	
+	@Autowired
+	CompteRepository compteRepository;
 
 	@Override
 	public List<Client> findAll() {
@@ -36,9 +41,16 @@ public class ClientService implements IClientService {
 	@Override
 	public void delete(Long idClient) {
 		clientRepository.deleteById(idClient);
-	
-	
+	}
 
-}
+	@Override
+	public Optional<Client> findByUsername(String username) {
+		return clientRepository.findByUsername(username);
+	}
+
+	@Override
+	public List<Compte> findByClient(Client client) {
+		return compteRepository.findByClient(client);
+	}
 	
 }

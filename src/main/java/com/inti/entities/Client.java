@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Client extends User {
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	Set<Compte> comptes;
 	

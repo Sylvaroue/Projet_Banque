@@ -29,7 +29,7 @@ public class CompteController {
 	
 	@GetMapping(value="compte/{id}")
 	public Compte findCompteById(@PathVariable("id") Long idCompte) {
-		return compteService.findOne(idCompte).orElse(null);
+		return compteService.findOne(idCompte);
 	}
 	
 	@PostMapping(value="compte")

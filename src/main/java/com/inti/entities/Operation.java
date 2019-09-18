@@ -29,7 +29,6 @@ public class Operation{
 	@OneToMany(mappedBy = "operation")
 	List<Commentaire> commentaire;
 	
-	@JsonIgnore
 	@ManyToOne
 	Compte compte;
 

@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 public class Compte {
@@ -19,10 +21,10 @@ public class Compte {
 	private long idCompte;
 	private float solde;
 	
-	@JsonIgnore
 	@ManyToOne
 	Client client;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "compte")
 	List<Operation> operations;
 
