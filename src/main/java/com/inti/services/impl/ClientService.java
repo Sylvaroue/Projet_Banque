@@ -52,5 +52,11 @@ public class ClientService implements IClientService {
 	public List<Compte> findByClient(Client client) {
 		return compteRepository.findByClient(client);
 	}
+
+	@Override
+	public void updateClient(Client client) {
+		this.clientRepository.save(client);
+		
+	}
 	
 }

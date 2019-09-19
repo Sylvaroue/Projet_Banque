@@ -15,6 +15,8 @@ public interface IClientService {
 	public Optional<Client> findById(Long idUser);
 	
 	public List<Compte> findByClient(Client client);
+	
+	public void updateClient(Client client);
 
 	public void delete(Long idUser);
 	

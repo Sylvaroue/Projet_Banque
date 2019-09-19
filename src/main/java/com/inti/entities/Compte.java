@@ -10,8 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 public class Compte {
@@ -19,6 +17,7 @@ public class Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idCompte;
+	private String intitule;
 	private float solde;
 	
 	@ManyToOne
@@ -31,11 +30,11 @@ public class Compte {
 	@OneToMany(mappedBy = "compte")
 	List<Seuil> seuil;
 	
-	public Compte(float solde, Client client, List<Operation> operations) {
+	public Compte(float solde, String intitule, Client client) {
 		super();
 		this.solde = solde;
 		this.client = client;
-		this.operations = operations;
+		this.intitule = intitule;
 	}
 
 	public Compte() {
@@ -48,6 +47,14 @@ public class Compte {
 
 	public void setIdCompte(long idCompte) {
 		this.idCompte = idCompte;
+	}
+
+	public String getIntitule() {
+		return intitule;
+	}
+
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
 	}
 
 	public float getSolde() {

@@ -3,6 +3,7 @@ package com.inti.services.interfaces;
 import java.util.List;
 
 import com.inti.entities.Compte;
+import com.inti.entities.Operation;
 
 public interface ICompteService {
 
@@ -14,5 +15,7 @@ public interface ICompteService {
 
 	public void delete(Long idCompte);
 	
-	public Compte soldeMaj(Compte compte);
+	public List<Operation> findOpByCompte(Compte compte);
+	
+	//public Compte soldeSimu(Compte compte);
 }
