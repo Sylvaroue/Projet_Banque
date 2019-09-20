@@ -46,7 +46,7 @@ public class CompteController {
 	}
 	
 	@GetMapping(value="ops-compte/{idCompte}")
-	public List<Operation> findComptesClient(@PathVariable("idCompte") Long idCompte) {
+	public List<Operation> findOperationsCompte(@PathVariable("idCompte") Long idCompte) {
 		Compte compte = compteService.findOne(idCompte);
 		return compteService.findOpByCompte(compte);
 	}

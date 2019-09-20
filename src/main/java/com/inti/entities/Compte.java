@@ -27,6 +27,7 @@ public class Compte {
 	@OneToMany(mappedBy = "compte")
 	List<Operation> operations;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "compte")
 	List<Seuil> seuil;
 	
