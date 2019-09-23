@@ -1,4 +1,4 @@
-# KnowledgeManagement
+# Projet_Banque
 
 This project aims to provide bank users a tool to help managing their budget.
 The whole concept is to simulate the evolution of an account's balance when operations (incomes, spendings) are applied.
