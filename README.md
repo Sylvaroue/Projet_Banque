@@ -12,7 +12,7 @@ The application's features are the following :
 * add or delete an operation
 * add an operation repeated each month at the same date
 
-This repository contains the Backend part of the project. The associated Backend can be found in the repository : "Projet_Banque_Angular".
+This repository contains the Backend part of the project. The associated Frontend can be found in the repository : "Projet_Banque_Angular".
 
 ## Getting Started
 
