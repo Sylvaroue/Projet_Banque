@@ -14,4 +14,6 @@ public List<Seuil> findAll();
 	public Optional<Seuil> findById(Long idSeuil);
 
 	public void delete(Long idSeuil);
+	
+	public void updateSeuil(Seuil seuil);
 }

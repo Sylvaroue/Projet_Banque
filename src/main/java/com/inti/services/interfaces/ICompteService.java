@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.inti.entities.Compte;
 import com.inti.entities.Operation;
+import com.inti.entities.Seuil;
 
 public interface ICompteService {
 
@@ -16,6 +17,8 @@ public interface ICompteService {
 	public void delete(Long idCompte);
 	
 	public List<Operation> findOpByCompte(Compte compte);
+	
+	public List<Seuil> findSeByCompte(Compte compte);
 	
 	//public Compte soldeSimu(Compte compte);
 }

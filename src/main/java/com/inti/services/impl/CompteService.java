@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.inti.entities.Compte;
 import com.inti.entities.Operation;
+import com.inti.entities.Seuil;
 import com.inti.repositories.CompteRepository;
 import com.inti.repositories.OperationRepository;
+import com.inti.repositories.SeuilRepository;
 import com.inti.services.interfaces.ICompteService;
 
 @Service
@@ -19,6 +21,9 @@ public class CompteService implements ICompteService {
 	
 	@Autowired
 	OperationRepository operationRepository;
+	
+	@Autowired
+	SeuilRepository seuilRepository;
 	
 	@Override
 	public List<Compte> findAll() {
@@ -50,6 +55,11 @@ public class CompteService implements ICompteService {
 	@Override
 	public List<Operation> findOpByCompte(Compte compte) {
 		return operationRepository.findByCompte(compte);
+	}
+
+	@Override
+	public List<Seuil> findSeByCompte(Compte compte) {
+		return seuilRepository.findByCompte(compte);
 	}
 	
 	//Ne pas utiliser, ça ne fonctionne pas !

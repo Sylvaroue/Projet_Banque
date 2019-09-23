@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inti.entities.Seuil;
+import com.inti.repositories.CompteRepository;
 import com.inti.repositories.SeuilRepository;
 import com.inti.services.interfaces.ISeuilService;
 
@@ -17,6 +18,9 @@ public class SeuilService implements ISeuilService {
 	
 	@Autowired
 	SeuilRepository seuilRepository;
+	
+	@Autowired
+	CompteRepository compteRepository;
 
 	@Override
 	public List<Seuil> findAll() {
@@ -36,9 +40,19 @@ public class SeuilService implements ISeuilService {
 	@Override
 	public void delete(Long idSeuil) {
 		seuilRepository.deleteById(idSeuil);
+		
+	}
+
+	@Override
+	public void updateSeuil(Seuil seuil) {
+	this.seuilRepository.save(seuil);
+	}
+	
+		
+	}
 	
 	
 
-}
 
-}
+
+

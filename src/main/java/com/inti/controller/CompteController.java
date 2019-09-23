@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.inti.entities.Compte;
 import com.inti.entities.Operation;
+import com.inti.entities.Seuil;
 import com.inti.services.interfaces.ICompteService;
 
 @RestController
@@ -49,6 +50,12 @@ public class CompteController {
 	public List<Operation> findOperationsCompte(@PathVariable("idCompte") Long idCompte) {
 		Compte compte = compteService.findOne(idCompte);
 		return compteService.findOpByCompte(compte);
+	}
+	
+	@GetMapping(value="seuils-compte/{idCompte}")
+	public List<Seuil> findSeuilsCompte(@PathVariable("idCompte") Long idCompte) {
+		Compte compte = compteService.findOne(idCompte);
+		return compteService.findSeByCompte(compte);
 	}
 	
 	//Ne pas utiliser, ça ne fonctionne pas !
