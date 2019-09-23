@@ -12,4 +12,5 @@ import com.inti.entities.Compte;
 public interface CompteRepository extends JpaRepository<Compte, Long> {
 
 	public List<Compte> findByClient(Client client);
+		
 }

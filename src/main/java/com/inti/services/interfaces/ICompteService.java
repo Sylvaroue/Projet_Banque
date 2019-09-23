@@ -17,5 +17,9 @@ public interface ICompteService {
 	
 	public List<Operation> findOpByCompte(Compte compte);
 	
-	//public Compte soldeSimu(Compte compte);
+	public Compte soldeMaj(Compte compte);
+	
+	public float soldeMois(Compte compte);
+	
+	public float soldeAnnee(Compte compte);
 }

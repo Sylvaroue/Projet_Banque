@@ -51,13 +51,23 @@ public class CompteController {
 		return compteService.findOpByCompte(compte);
 	}
 	
-	//Ne pas utiliser, ça ne fonctionne pas !
-	/*@PutMapping(value="solde/{id}")
+	@PutMapping(value="solde/{id}")
 	public Compte updateSolde(@PathVariable("id") long idCompte, @RequestBody Compte compte) {
 		if(compteService.findOne(idCompte) == null) {
 			return null;
 		} else 
-			compteService.soldeSimu(compte);
-			return compteService.save(compte);
-	}*/
+			return compteService.soldeMaj(compte);
+	}
+	
+	@GetMapping(value="prevMois/{id}")
+	public float previsionMois(@PathVariable("id") long idCompte) {
+		Compte compte = compteService.findOne(idCompte);
+		return compteService.soldeMois(compte);
+	}
+	
+	@GetMapping(value="prevAnnee/{id}")
+	public float previsionAnnee(@PathVariable("id") long idCompte) {
+		Compte compte = compteService.findOne(idCompte);
+		return compteService.soldeAnnee(compte);
+	}
 }

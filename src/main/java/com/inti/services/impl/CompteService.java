@@ -1,5 +1,7 @@
 package com.inti.services.impl;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,31 +54,74 @@ public class CompteService implements ICompteService {
 		return operationRepository.findByCompte(compte);
 	}
 	
-	//Ne pas utiliser, ça ne fonctionne pas !
-	/*@Override
-	public Compte soldeSimu(Compte compte) {
+	@Override
+	public Compte soldeMaj(Compte compte) {
 		List<Operation> opSolde = operationRepository.findByCompte(compte);
 		float soldeNew = compte.getSolde();
-		boolean eph = false;
+		Calendar calendar = Calendar.getInstance();
+		Date today = calendar.getTime();
+		
 		for (Operation opModif : opSolde) {
-			float modifier = opModif.getMontant();
-			if (opModif.getType() == "dépense") {
-				soldeNew -= modifier;
-			} else {
-				soldeNew += modifier;
+			Date dateOp = opModif.getDateOperation();
+			if (dateOp.compareTo(today) < 0) {
+				float modifier = opModif.getMontant();
+				if (opModif.getType().compareTo("dépense") == 0) {
+					soldeNew -= modifier;
+				} else {
+					soldeNew += modifier;
+				}
+				operationRepository.delete(opModif);
 			}
 		}
 		compte.setSolde(soldeNew);
-		for (Compte cpt : compteRepository.findAll()) {
-			if (cpt.getIdCompte() == 0) eph = true;
-		}
-		if (eph = false) {
-			compte.setIdCompte(0);
-		} else {
-			compteRepository.deleteById((long) 0);
-			compte.setIdCompte(0);
-		}
-		return compte;
+		return compteRepository.save(compte);
 	}
-*/
+
+	@Override
+	public float soldeMois(Compte compte) {
+		float solde = compte.getSolde();
+		Calendar month = Calendar.getInstance();
+		int aCurrent = month.get(Calendar.YEAR);
+		int mCurrent = month.get(Calendar.MONTH);
+		List<Operation> opSolde = operationRepository.findByCompte(compte);
+		
+		for (Operation opModif : opSolde) {
+			Date date = opModif.getDateOperation();
+			Calendar opCalendar = Calendar.getInstance();
+			opCalendar.setTime(date);
+			if (aCurrent == opCalendar.get(Calendar.YEAR) && mCurrent == opCalendar.get(Calendar.MONTH)) {
+				float modifier = opModif.getMontant();
+				if (opModif.getType().compareTo("dépense") == 0) {
+					solde -= modifier;
+				} else {
+					solde += modifier;
+				}
+			}
+		}		
+		return solde;
+	}
+ 
+	@Override
+	public float soldeAnnee(Compte compte) {
+		float solde = compte.getSolde();
+		Calendar year = Calendar.getInstance();
+		int aCurrent = year.get(Calendar.YEAR);
+		List<Operation> opSolde = operationRepository.findByCompte(compte);
+		
+		for (Operation opModif : opSolde) {
+			Date date = opModif.getDateOperation();
+			Calendar opCalendar = Calendar.getInstance();
+			opCalendar.setTime(date);
+			if (aCurrent == opCalendar.get(Calendar.YEAR)) {
+				float modifier = opModif.getMontant();
+				if (opModif.getType().compareTo("dépense") == 0) {
+					solde -= modifier;
+				} else {
+					solde += modifier;
+				}
+			}
+		}		
+		return solde;
+	}
+
 }
