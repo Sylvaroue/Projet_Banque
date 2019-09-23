@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.inti.entities.Compte;
 import com.inti.entities.Operation;
+import com.inti.entities.Seuil;
 
 public interface ICompteService {
 
@@ -17,9 +18,12 @@ public interface ICompteService {
 	
 	public List<Operation> findOpByCompte(Compte compte);
 	
+	public List<Seuil> findSeByCompte(Compte compte);
+	
 	public Compte soldeMaj(Compte compte);
 	
 	public float soldeMois(Compte compte);
 	
 	public float soldeAnnee(Compte compte);
+
 }
