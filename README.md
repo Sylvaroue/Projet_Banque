@@ -73,3 +73,7 @@ $ mvn spring-boot:run
 
 * **Rouet Sylvain** - https://github.com/Sylvaroue/
 * **Horlaville David**
+
+## License
+
+This project is licensed under the MIT License.
